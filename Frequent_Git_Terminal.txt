@@ -70,7 +70,7 @@ open ~/.ssh                             # check existence of file
 pbcopy < ~/.ssh/id_rsa.pub              # copy ssh key into keyboard and ready to paste
 
 2. `Init a repo in GitHub`
-mkdir repo
+mkdir repo                              # Create folder using terminal, not useful.
 cd repo
 
 git init
@@ -104,4 +104,9 @@ git status
 git commit -m 'message'
 git push
 
--- After push request, local folder will auto-apdate files when switching different branches.
+`Message Standard`
+* change content
++ new file
+- delete file
+
+-- After push request, local folder will auto-update files when switching different branches.
