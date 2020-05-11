@@ -1,8 +1,9 @@
-GitHub
+GitHub is code hosting platform for version control and collabration.
+Cited: https://guides.github.com/activities/hello-world/
 
 
 ## Terminal keywords
-pwd         # print working directory
+pwd         # print current working directory
 ls          # list files in directory
 cd          # change directory
 ~           # home directory
@@ -23,7 +24,6 @@ git checkout <branch>       # Switch to existing local branch
 git checkout master         # go back to master branch
 git merge <branch>          # merge changes from branch
 git pull . <branch>         # merge changes from branch (all git version)
-
 
 git checkout -b <new-branch>     # Create new branch off current branch and switch
 --- same as ---
@@ -62,7 +62,9 @@ git push
 ## Excercise - 11 May 2020
 1. `ssh key setup`
 With SSH keys, you can connect GitHub without supplying your username or password at each visit.
-
+Each SSH key pair includes two keys: 
+  - Public key: copied to SSH server
+  - Private key: remain only with user, proof of user identity
 
 ssh-keygen -t rsa -b 4096 -C "your_email@example.com"       # create new ssh key using email address
 eval "$(ssh-agent -s)"                  # Start the ssh-agent in the background
@@ -70,13 +72,14 @@ open ~/.ssh                             # check existence of file
 pbcopy < ~/.ssh/id_rsa.pub              # copy ssh key into keyboard and ready to paste
 
 2. `Init a repo in GitHub`
-mkdir repo                              # Create folder using terminal, not useful.
+mkdir repo                              # Create folder using terminal, not useful
 cd repo
 
-git init
+git init                                # one-time command
 --> Initialized empty Git repository in /Users/sallycy/.git/
 
-3. `Clone a repo`
+3. `Clone a repo`                       ## Start a project by clone a repository
+pwd                                     # print current working directory
 git clone <url>
 cd <repository>
 
@@ -85,11 +88,18 @@ git add readme.md
 
 5. `Submit the file`
 git status
+
 git commit -m 'add readme.md file'
+`Standard Message`
+* update file
++ add new file
+- delete file
+
 git push
 
 6. `Create a branch called dev`
 git branch dev
+
 7. `Checkout the branch`
 git checkout dev
 
@@ -104,9 +114,13 @@ git status
 git commit -m 'message'
 git push
 
-`Message Standard`
-* change content
-+ new file
-- delete file
+-- After push request, local folder will auto-apdate files when switching different branches.
 
--- After push request, local folder will auto-update files when switching different branches.
+
+## Excercise - 12 May 2020
+1. Readme.md template
+
+2. Gitflow
+3. Git reset head
+4. Conflict
+
