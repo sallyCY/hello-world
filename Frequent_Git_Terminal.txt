@@ -10,6 +10,7 @@ cd          # change directory
 ..          # up one directory
 -           # previous working directory
 mkdir       # create new directory
+&&          # use to type two command in a single line
 
 
 ## Get Start
@@ -22,13 +23,18 @@ git branch                  # Get available branches (* is the active/current br
 git checkout <branch>       # Switch to existing local branch
 
 git checkout master         # go back to master branch
-git merge <branch>          # merge changes from branch
-git pull . <branch>         # merge changes from branch (all git version)
+git merge <branch>          # merge changes from branch to master
+
+git pull <branch>           # fetch and download content from a remote repository and immediately update the local repository to match that content. It's a combination command, equal to git fetch + git merge.  
+Whenever you checkout to another branch that may have new changes, it’s always a good idea to execute git pull.
+--- same as ---
+git fetch                   # On its own, git fetch updates all the remote tracking branches in local repository. No changes are actually reflected on any of the local working branches.
+git merge                   # Without any arguments, git merge will merge the corresponding remote tracking branch to the local working branch.
 
 git checkout -b <new-branch>     # Create new branch off current branch and switch
 --- same as ---
-git branch <new_branch>              # Create new branch
-git checkout <new_branch>            # Swithch to new created branch
+git branch <new_branch>          # Create new branch
+git checkout <new_branch>        # Swithch to new created branch
 --- additional case ---
 git checkout -b <new-branch> <existing-branch>  # Create new branch off specific branch
 
@@ -43,11 +49,12 @@ git branch -m <newname>         # rename branch
 
 
 ## Create Project
-git init                            # initializes the repository, convert an existing, unversioned project to a Git repository or initialize a new, empty repository
-git add <filename>                  # add file 
-git add .                           # add all files # add upload file to staging branch
-git commit -m 'message'            # Commit all changes with message
+git init                        # initializes the repository, convert an existing, unversioned project to a Git repository or initialize a new, empty repository
+git add <filename>              # add file 
+git add .                       # add all files # add upload file to staging branch
+git commit -m 'message'         # Commit all changes with message
 
+git log                         # Display commit history
 
 
 ## Special Examples
@@ -59,28 +66,29 @@ git push
 
 
 
-## Excercise - 11 May 2020
+# Excercise - 11 May 2020
 1. `ssh key setup`
 With SSH keys, you can connect GitHub without supplying your username or password at each visit.
 Each SSH key pair includes two keys: 
   - Public key: copied to SSH server
   - Private key: remain only with user, proof of user identity
+Cited: https://www.ssh.com/ssh/public-key-authentication
 
 ssh-keygen -t rsa -b 4096 -C "your_email@example.com"       # create new ssh key using email address
-eval "$(ssh-agent -s)"                  # Start the ssh-agent in the background
-open ~/.ssh                             # check existence of file
-pbcopy < ~/.ssh/id_rsa.pub              # copy ssh key into keyboard and ready to paste
+eval "$(ssh-agent -s)"          # Start the ssh-agent in the background
+open ~/.ssh                     # check existence of file
+pbcopy < ~/.ssh/id_rsa.pub      # copy ssh key into keyboard and ready to paste
 
 2. `Init a repo in GitHub`
-mkdir repo                              # Create folder using terminal, not useful
+mkdir repo                      # Create folder using terminal, not useful
 cd repo
 
-git init                                # one-time command
+git init                        # one-time command
 --> Initialized empty Git repository in /Users/sallycy/.git/
 
-3. `Clone a repo`                       ## Start a project by clone a repository
-pwd                                     # print current working directory
-git clone <url>
+3. `Clone a repo`               
+pwd                             # print current working directory
+git clone <url>                 # Start a project by clone a repository
 cd <repository>
 
 4. `Add a readme.med & edit the file`
@@ -90,10 +98,11 @@ git add readme.md
 git status
 
 git commit -m 'add readme.md file'
-`Standard Message`
+`Commit Message Standard`
 * update file
 + add new file
 - delete file
+Explanatory text explaining what has been changed and why the change was necessary. Write in the imperative mood (present tense)
 
 git push
 
@@ -117,10 +126,115 @@ git push
 -- After push request, local folder will auto-apdate files when switching different branches.
 
 
-## Excercise - 12 May 2020
+
+# Excercise - 12 May 2020
 1. Readme.md template
+  README file is normally the first entry point to your code. It should tell people why they should use your module, how they can install it and how they can use it. People can use your module without ever having to look at its code.
+  Markdown format: https://help.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax
+
 
 2. Gitflow
-3. Git reset head
-4. Conflict
+## Create feature branch
+*`create feature branch off develop and merge back to develop when complete, feature should never interact directly with master`*
+git checkout master
+git checkout -b develop
+git checkout -b feature_branch    # work happens on feature_branch
 
+git checkout develop              # merge feature to develop branch
+git merge feature_branch
+
+git checkout master
+git merge develop
+git branch -d feature_branch      # delete feature branch when complete
+
+## Create release branch
+*`create release branch, so one team to polish (no new features can be added, only bug fixes, documentation generation etc.) current release, while another team continues working on features for the next release `*
+git checkout develop
+git checkout -b release/0.1.0     # release branch with its version number
+
+git checkout master
+git merge release/0.1.0           # release is ready to ship
+
+git checkout develop
+git merge release/0.1.0           # important to merge back into develop because critical updates may have been added to the release branch
+
+git branch -d release/0.1.0       # delete release branch
+
+## Create hotfix branch
+*`hotfix branch for bug fixes and avoid interupting the rest of whole workflow`*
+git checkout master
+git checkout -b hotfix_branch     # ad hoc dedicated line for bug fixes
+
+git checkout develop
+git merge hotfix_branch
+git checkout master
+git merge hotfix_brance
+
+## The overall flow of Gitflow:
+  - A develop branch is created from master
+  - A release branch is created from develop
+  - Feature branches are created from develop
+  - When a feature is complete it is merged into the develop branch
+  - When the release branch is done it is merged into develop and master
+  - If an issue in master is detected a hotfix branch is created from master
+  - Once the hotfix is complete it is merged to both develop and master
+Cited: https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow
+
+
+3. Git reset head vs. git checkout
+<mode>
+--hard                          # discard all uncomitted changes, cannot be undone
+--mixed (by default)            # unstage (move pending changes back to working directory)
+--soft                          # reset commit history and move them back to staged files
+
+HEAD~2                          # move HEAD back by 2 commits
+
+## reset
+git reset <mode> <commit>
+git reset HEAD~2                # move branch backwards by two commits.
+
+git reset <mode> <file>
+git reset HEAD~2 foo.py
+
+git status
+git ls-files -s                 # Check current state of repo
+git log                         # Display commit history
+
+## checkout
+git checkout <commit>           # move HEAD or change branch
+git checkout HEAD~2
+git checkout <branch>
+
+git checkout <file>             # updates the working directory instead of the stage, discarding unstaged changes.
+
+
+
+4. Conflict
+## Fail to merge under 2 situations
+*`S1: Git fails to start the merge`*
+This occurs because git knows there are changes in either your working directory or staging area that could be written over by the files that you are merging in. 
+
+The error messages are as follows:
+error: Entry '<fileName>' not uptodate. Cannot merge. (Changes in working directory)
+or
+error: Entry '<fileName>' would be overwritten by merge. Cannot merge. (Changes in staging area)
+
+*`S2: Git fails during the merge`*
+A failure during a merge indicates a conflict between the current local branch and the branch being merged. This occurs because you have committed changes that are in conflict with someone else's committed changes. 
+
+The error messages are as follows:
+CONFLICT (content): Merge conflict in <fileName>
+Automatic merge failed; fix conflicts and then commit the result.
+
+## How to deal with merge conflicts
+If your merge failed to even start, there will be no conflicts in files. 
+You need to modify or stash (it temporary puts your local changes into another place) the files it lists and then try to do a git pull again. 
+
+If Git finds conflicts during the merge, it will list all files that have conflicts after the error message. 
+
+git status                 # Check on which files have merge conflicts 
+cat <filename>             # Show content conflicts between two files =====
+
+git add <filename>
+git commit -m "Resolved merge conflict by ..."
+git push
