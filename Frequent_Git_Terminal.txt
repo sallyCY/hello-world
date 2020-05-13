@@ -1,4 +1,4 @@
-GitHub is code hosting platform for version control and collabration.
+GitHub is code hosting platform for version control and collaboration.
 Cited: https://guides.github.com/activities/hello-world/
 
 
@@ -34,7 +34,7 @@ git merge                   # Without any arguments, git merge will merge the co
 git checkout -b <new-branch>     # Create new branch off current branch and switch
 --- same as ---
 git branch <new_branch>          # Create new branch
-git checkout <new_branch>        # Swithch to new created branch
+git checkout <new_branch>        # Switch to new created branch
 --- additional case ---
 git checkout -b <new-branch> <existing-branch>  # Create new branch off specific branch
 
@@ -49,7 +49,7 @@ git branch -m <newname>         # rename branch
 
 
 ## Create Project
-git init                        # initializes the repository, convert an existing, unversioned project to a Git repository or initialize a new, empty repository
+git init                        # initialises the repository, convert an existing, unversioned project to a Git repository or initialise a new, empty repository
 git add <filename>              # add file 
 git add .                       # add all files # add upload file to staging branch
 git commit -m 'message'         # Commit all changes with message
@@ -66,7 +66,7 @@ git push
 
 
 
-# Excercise - 11 May 2020
+# Exercise - 11 May 2020
 1. `ssh key setup`
 With SSH keys, you can connect GitHub without supplying your username or password at each visit.
 Each SSH key pair includes two keys: 
@@ -84,7 +84,7 @@ mkdir repo                      # Create folder using terminal, not useful
 cd repo
 
 git init                        # one-time command
---> Initialized empty Git repository in /Users/sallycy/.git/
+--> Initialised empty Git repository in /Users/sallycy/.git/
 
 3. `Clone a repo`               
 pwd                             # print current working directory
@@ -123,11 +123,11 @@ git status
 git commit -m 'message'
 git push
 
--- After push request, local folder will auto-apdate files when switching different branches.
+-- After push request, local folder will auto-update files when switching different branches.
 
 
 
-# Excercise - 12 May 2020
+# Exercise - 12 May 2020
 1. Readme.md template
   README file is normally the first entry point to your code. It should tell people why they should use your module, how they can install it and how they can use it. People can use your module without ever having to look at its code.
   Markdown format: https://help.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax
@@ -161,7 +161,7 @@ git merge release/0.1.0           # important to merge back into develop because
 git branch -d release/0.1.0       # delete release branch
 
 ## Create hotfix branch
-*`hotfix branch for bug fixes and avoid interupting the rest of whole workflow`*
+*`hotfix branch for bug fixes and avoid interrupting the rest of whole workflow`*
 git checkout master
 git checkout -b hotfix_branch     # ad hoc dedicated line for bug fixes
 
@@ -183,13 +183,13 @@ Cited: https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workf
 
 3. Git reset head vs. git checkout
 <mode>
---hard                          # discard all uncomitted changes, cannot be undone
+--hard                          # discard all uncommitted changes, cannot be undone
 --mixed (by default)            # unstage (move pending changes back to working directory)
 --soft                          # reset commit history and move them back to staged files
 
 HEAD~2                          # move HEAD back by 2 commits
 
-## reset
+## reset  - move HEAD and branch together
 git reset <mode> <commit>
 git reset HEAD~2                # move branch backwards by two commits.
 
@@ -200,7 +200,7 @@ git status
 git ls-files -s                 # Check current state of repo
 git log                         # Display commit history
 
-## checkout
+## checkout - move HEAD only
 git checkout <commit>           # move HEAD or change branch
 git checkout HEAD~2
 git checkout <branch>
@@ -233,7 +233,7 @@ You need to modify or stash (it temporary puts your local changes into another p
 If Git finds conflicts during the merge, it will list all files that have conflicts after the error message. 
 
 git status                 # Check on which files have merge conflicts 
-cat <filename>             # Show content conflicts between two files =====
+cat <filename>             # Show content conflicts between two files >>> ===== <<<
 
 git add <filename>
 git commit -m "Resolved merge conflict by ..."
