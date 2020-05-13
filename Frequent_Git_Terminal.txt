@@ -66,7 +66,7 @@ git push
 
 
 
-# Exercise - 11 May 2020
+# Exercise 1 - 11 May 2020
 1. `ssh key setup`
 With SSH keys, you can connect GitHub without supplying your username or password at each visit.
 Each SSH key pair includes two keys: 
@@ -127,13 +127,14 @@ git push
 
 
 
-# Exercise - 12 May 2020
+# Exercise 2 - 12 May 2020
 1. Readme.md template
   README file is normally the first entry point to your code. It should tell people why they should use your module, how they can install it and how they can use it. People can use your module without ever having to look at its code.
   Markdown format: https://help.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax
 
 
 2. Gitflow
+Clear bugs before merge to master. Set different issues separately.
 ## Create feature branch
 *`create feature branch off develop and merge back to develop when complete, feature should never interact directly with master`*
 git checkout master
@@ -182,36 +183,22 @@ Cited: https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workf
 
 
 3. Git reset head vs. git checkout
-<mode>
---hard                          # discard all uncommitted changes, cannot be undone
---mixed (by default)            # unstage (move pending changes back to working directory)
---soft                          # reset commit history and move them back to staged files
-
-HEAD~2                          # move HEAD back by 2 commits
-
 ## reset  - move HEAD and branch together
-git reset <mode> <commit>
-git reset HEAD~2                # move branch backwards by two commits.
-
-git reset <mode> <file>
-git reset HEAD~2 foo.py
+git reset HEAD~2                # move branch backwards by two commits, unstage committed commands
 
 git status
 git ls-files -s                 # Check current state of repo
 git log                         # Display commit history
 
 ## checkout - move HEAD only
-git checkout <commit>           # move HEAD or change branch
-git checkout HEAD~2
-git checkout <branch>
+git checkout <branch>           # move HEAD or change branch
 
-git checkout <file>             # updates the working directory instead of the stage, discarding unstaged changes.
-
+git checkout <file>             # updates the working directory, discarding unstaged changes.
 
 
 4. Conflict
 ## Fail to merge under 2 situations
-*`S1: Git fails to start the merge`*
+*`S1: Git fails to start the merge`* - conflict when commit
 This occurs because git knows there are changes in either your working directory or staging area that could be written over by the files that you are merging in. 
 
 The error messages are as follows:
@@ -219,7 +206,7 @@ error: Entry '<fileName>' not uptodate. Cannot merge. (Changes in working direct
 or
 error: Entry '<fileName>' would be overwritten by merge. Cannot merge. (Changes in staging area)
 
-*`S2: Git fails during the merge`*
+*`S2: Git fails during the merge`* - conflict when merge
 A failure during a merge indicates a conflict between the current local branch and the branch being merged. This occurs because you have committed changes that are in conflict with someone else's committed changes. 
 
 The error messages are as follows:
@@ -232,9 +219,16 @@ You need to modify or stash (it temporary puts your local changes into another p
 
 If Git finds conflicts during the merge, it will list all files that have conflicts after the error message. 
 
+git pull <branch>          # pull origin after conflicts
 git status                 # Check on which files have merge conflicts 
 cat <filename>             # Show content conflicts between two files >>> ===== <<<
 
 git add <filename>
 git commit -m "Resolved merge conflict by ..."
 git push
+
+
+# Exercise 3 - 13 May 2020
+1. git stash
+
+2. git merge
