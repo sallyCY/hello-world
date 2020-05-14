@@ -237,5 +237,7 @@ git push
 
 4. Create a pull reguest to my branch and merge to master
 
+5. git ignore 
+
 
 (git merge)
