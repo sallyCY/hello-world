@@ -228,7 +228,14 @@ git commit -m "Resolved merge conflict by ..."
 git push
 
 
-# Exercise 3 - 13 May 2020
-1. git stash
+# Exercise 3 - 14 May 2020
+1. lock master branch - edit permission
 
-2. git merge
+2. create issue in GitHub
+
+3. Connect IDE to GitHub, checkout issue branch and push the branch using shortcuts
+
+4. Create a pull reguest to my branch and merge to master
+
+
+(git merge)
