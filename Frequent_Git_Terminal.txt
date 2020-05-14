@@ -239,7 +239,7 @@ View - Command Palette --> type command line
 add vs code extension --> start working on issue --> create pull request for issue to dev branch
 
 4. Create a pull reguest to my branch and merge to master
-
+pull dev --> checkout master --> merge from dev branch --> push
 
 
 5. gitignore              # never stage this file
