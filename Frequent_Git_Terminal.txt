@@ -241,9 +241,6 @@ add vs code extension --> start working on issue --> create pull request for iss
 4. Create a pull reguest to my branch and merge to master
 pull dev --> checkout master --> merge from dev branch --> push
 
-
+Tricks:
 5. gitignore              # never stage this file
-
 6. remove project from git by delete hidden .git file in local repo folder.
-
-(git merge)
