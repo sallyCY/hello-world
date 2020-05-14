@@ -56,6 +56,9 @@ git commit -m 'message'         # Commit all changes with message
 
 git log                         # Display commit history
 
+git add remote                  # link remote repo to local folder before push (no clone repo case)
+git push
+
 
 ## Special Examples
 //have 11 files but want to commit 10 files
