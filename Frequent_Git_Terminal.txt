@@ -237,7 +237,7 @@ Cited: https://rietta.com/blog/git-branch-protection/
 ## vs code
 View - Command Palette --> type command line
 
-4. Create a pull reguest to my branch and merge to master
+4. Create a pull reguest to my branch and merge to dev
 add vs code extension --> start working on issue.
 
 5. gitignore              # never stage this file
