@@ -229,7 +229,7 @@ git push
 
 # Exercise 3 - 14 May 2020
 1. lock master branch - edit permission
-?
+Cited: https://rietta.com/blog/git-branch-protection/
 
 2. create issue in GitHub
 
