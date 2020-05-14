@@ -56,7 +56,7 @@ git commit -m 'message'         # Commit all changes with message
 
 git log                         # Display commit history
 
-git add remote                  # link remote repo to local folder before push (no clone repo case)
+git add remote <repo-name> <url>                  # link remote repo to local folder before push (no clone repo case)
 git push
 
 
@@ -217,10 +217,6 @@ CONFLICT (content): Merge conflict in <fileName>
 Automatic merge failed; fix conflicts and then commit the result.
 
 ## How to deal with merge conflicts
-If your merge failed to even start, there will be no conflicts in files. 
-You need to modify or stash (it temporary puts your local changes into another place) the files it lists and then try to do a git pull again. 
-
-If Git finds conflicts during the merge, it will list all files that have conflicts after the error message. 
 
 git pull <branch>          # pull origin after conflicts
 git status                 # Check on which files have merge conflicts 
@@ -233,14 +229,18 @@ git push
 
 # Exercise 3 - 14 May 2020
 1. lock master branch - edit permission
+?
 
 2. create issue in GitHub
 
 3. Connect IDE to GitHub, checkout issue branch and push the branch using shortcuts
+## vs code
+View - Command Palette --> type command line
 
 4. Create a pull reguest to my branch and merge to master
 
-5. git ignore 
+5. gitignore              # never stage this file
 
+6. remove project from git by delete hidden .git file in local repo folder.
 
 (git merge)
