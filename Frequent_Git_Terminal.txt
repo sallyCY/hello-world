@@ -236,9 +236,11 @@ Cited: https://rietta.com/blog/git-branch-protection/
 3. Connect IDE to GitHub, checkout issue branch and push the branch using shortcuts
 ## vs code
 View - Command Palette --> type command line
+add vs code extension --> start working on issue --> create pull request for issue to dev branch
 
-4. Create a pull reguest to my branch and merge to dev
-add vs code extension --> start working on issue.
+4. Create a pull reguest to my branch and merge to master
+
+
 
 5. gitignore              # never stage this file
 
