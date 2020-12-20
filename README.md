@@ -1,4 +1,5 @@
 # hello-world
 First Repository
 
-Here: Make and commit changes
+Some notes about my initial learning for git and github in the `detail` folder.
+
